@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>1225</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,600');
+		@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+		*{
+			font-family: "Josefin Sans","Noto Sans TC";
+		}
+
+		body,h1,h2,h3,h4,h5,h6,ul,li,p{
+			margin: 0;
+			padding: 0;
+		}	
+		.clearfix::after{   /*clearfix  清除浮動*/
+			content:"";
+			display: block;
+			clear: both;
+		}
+		a{
+			text-decoration: none;
+			color: #000;
+		}
+		img{
+			width: 100%;
+		}
+	.fixed-width{
+		width: 960px;
+		margin: auto;
+	}
+	.full-width{
+		width: 100%;
+	}
+	.col-2{
+		width: calc(50% - 30px); /*calc  自動計算函數 
+		圖左右100除2=50 , margin左右各15共30px*/
+		float: left;
+		margin: 0 15px;
+	}.col-3{
+		width: calc(100% / 3 - 30px); /*100% / 3 三個區塊*/
+		float: left;
+		margin: 0 15px;
+	}.col-4{
+		width: calc(100% / 4 - 30px); /*100% / 4 四個區塊*/
+		float: left;
+		margin: 0 15px;
+	}
+	.wraper{
+		width: 100%;
+		height: 100%;
+		background-image: url(36088267410_4a6e4727e4_b.jpg);
+		background-repeat:  no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+		background-attachment: fixed;  /*身體包住 使背景圖 不會移動*/
+	}
+	nav{
+		background-color:  transparent;   /*1背景透明*/
+		position: fixed;
+		z-index: 9;     
+		/*設定相對定位logo被蓋住, 順序是nav=>header在後 ,nav使之跑出來用*/
+	}
+	nav .logo{
+		float: left;
+		height: 40px;
+		line-height: 40px;
+		color: #fff;
+		font-size: 22px;
+		border: 3px solid #FFF;
+		font-weight: 600;
+		margin: 12px 0;
+		padding: 0 5px;
+	}
+	nav .orange{
+		color:#f86006;
+	}
+	nav ul{
+		float: right;
+	}
+	nav li{
+		list-style-type: none;
+		float: left;
+	}
+	nav a:hover{
+		color: #E61;   /*home services等 滑過去 字變色*/
+	}
+	nav li a{
+		display: block;
+		height: 70px;        /*高70*/
+		line-height: 70px;    /*高70  垂直置中*/
+		color: #fff;
+		text-align: center;  /*字在框框的中間*/
+		padding-left: 15px;
+		transition: .5S;
+	}
+	header{
+		padding-top: 150px;
+		/*padding: 200px 0 550px 0; */
+		/*position: relative;*/
+	}
+	header .title{
+		text-align: center;
+	}
+	header .title h1{
+		font-size: 36px;
+		color: #fff;
+	}
+	header .title hr{
+		width: 150px;
+		height: 1.5px;
+		background-color: #fff;
+		border: 0;  /*Beautiful與Cleanly  中間白線 設定border: 0 即沒有黑線產生*/
+	}
+	header .title h3{
+		color: #fff;
+		font-style: italic;
+		font-size: 24px;
+	}
+	header .title a,.orangeblock .right a,.welcome a,.store .col-3 a,.touch input[type="submit"]{
+		/*.orangeblock .right a (Call to Action)在右邊*/
+		display: block;
+		width: 86px;
+		height: 25px;
+		text-align: center;
+		line-height: 25px;
+		background-color: rgba(255,255,255,.5);
+		padding: 10px 20px;
+		margin: auto;
+		margin-top: 50px;
+		border-radius: 5px;
+		transition: all 0.3s;
+		}
+		header .orangeblock .right a:hover{    /*  call to actin滑過去變色*/
+			background-color: #D3B6AD;
+		}
+		header .title a:hover{
+			background-color: #D0CFCC;     /*  buy now 滑過去變色*/
+		}
+		header .menu{
+			color: #fff;
+			text-align: center;
+			margin-top: 30px;
+			/*position: absolute;;*/
+			/*bottom: 20px*/
+		}
+		header .icon{
+			border-radius: 50%;
+			border: 1px solid #fff;
+			padding: 10px;
+			margin-bottom: 15px;
+		}
+		header .menu .col-3{
+			transition: all 0.3s;
+			padding: 15px;
+			-webkit-box-sizing: border-box;   /*這三段 用  快捷 bixz*/
+			 -moz-box-sizing: border-box;
+			 box-sizing: border-box; 
+		}
+		header .menu .col-3:hover{
+			background-color: rgba(0,0,0,0.5);
+		}
+		.orangeblock{
+			height: 200px;
+			background-color: #D72;
+		}
+		.orangeblock .left{
+			float: left;
+			font-size: 24px;
+			color: #fff;
+			line-height: 200px;
+			
+		}
+	    .orangeblock  .right{
+	    	float: right;
+	    }
+	    .orangeblock  .right a{
+			font-size: 14px;
+			margin-top: 87.5px;    /*(200-25)/2=87.5*/
+			
+	}
+	.what{
+		text-align: center;
+	}
+	.what h2{
+		color: #fff;
+		margin: 30px 0 15px 0;
+		font-size: 28px;
+	}
+	.what h4{
+		color: #fff;
+		margin: 30px 0 60px 0;
+	}
+	.what  .col-3{
+		background-color: #fff;
+		padding: 10px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	.what  .col-3 h5{
+		margin:5px 0;
+		color: rgba(0,0,0,0.7);
+		font-size: 18px;
+	}
+	.what  .col-3 p{
+		font-size: 12px;
+		color: rgba(0,0,0,0.7);
+	}
+	.what .icon_what{
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background-color: #EEE;
+		line-height: 50px;   /*要對齊置中 所以行高要和高度一樣*/
+		color: #F35D0B;
+		font-size: 20px;
+		margin: 15px 0;
+		transition: all 0.3S;
+	}
+	.what .col-3:hover .icon_what{
+		background-color: #F35D0B;
+		color: #fff;
+	}
+	.about{
+		background-color: #fff;
+		padding: 50px 0;
+	}
+	.about h2{
+	   	font-size: 36px;   /*設定About Us 字體大小*/
+	}
+	.about .col-2:nth-of-type(2){   
+		/*同時有2個col-2時，可用nth-of-type(2)語法,指定第二個col-2*/
+		padding: 15px;
+		-webkit-box-sizing: border-box;/*這三行 讓圖不要超出白底色塊*/
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.welcome{
+		padding: 50px;
+		text-align: center;
+		background-color: rgba(63,191,168,0.3)
+	}
+	.welcome p{
+		font-size: 24px;
+		font-weight: 600;
+		color: #fff
+	}
+	.welcome a,.store .col-3 a,.touch input[type="submit"]{ 
+		font-size: 14px;
+		background-color: #F35D0B;
+		padding: 12px 16px;
+		color: #fff;
+	}
+	.fixed-width_600{
+		width: 600px;
+		margin: auto;
+	}
+	.team,.happy{
+		padding: 50px 0;
+		background-color: #fff;
+	}
+	.team h1,.store h1,.happy h1,.news h1,.touch h1{
+		text-align: center;
+		font-size: 35px;
+		margin-bottom: 20px;
+	}
+	.team h4,.store h4,.happy h4,.news h4,.touch h4{
+		text-align: center;
+		font-size: 25px;
+		margin-bottom: 30px;
+	}
+	.team .col-4{
+		height: 300px;
+		background-repeat: no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+		position: relative;    /*Co-founder*/
+		overflow: hidden;     /*讓超出來的透明斜色塊 不要出現*/
+	}
+	.team .col-4::before{
+	content: "";
+	display: block;
+	width: 95%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.3);
+	z-index: 1;
+	transform: skewX(-30deg)translateX(-200px);
+	transition: all 0.3s;
+	}
+		
+	.team .col-4:hover::before{
+		content:"";
+		transform:skewX(-30deg)translateX(-30px);
+	}
+	.team .col-4:hover .name,
+	.team .col-4:hover .desc,
+	.team .col-4:hover .icon
+	{
+		opacity: 1;
+	}
+
+
+	.team .col-4:nth-of-type(1){
+		background-image: url(team-1-1.png);
+	}
+	.team .col-4:nth-of-type(2){
+		background-image: url(team-2-1.png);
+	}
+	.team .col-4:nth-of-type(3){
+		background-image: url(team3-1.png);
+	}
+	.team .col-4:nth-of-type(4){
+		background-image: url(smile-love.jpg);
+	}
+	.team .job{
+		position: absolute;
+		bottom: 0;
+		padding: 5px;
+		text-align: right;
+		color: #fff;
+		font-weight: 600;
+		width: 100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	.team .col-4:nth-of-type(1) .job{
+		background-color: #F77;
+	}
+	.team .col-4:nth-of-type(2) .job{
+		background-color: #DA2;
+	}
+	.team .col-4:nth-of-type(3) .job{
+		background-color: #26B;
+	}
+	.team .col-4:nth-of-type(4) .job{
+		background-color: #184;
+	}
+	.team .name, .team .desc,.team .icon{
+		position: absolute;
+		left: 25px;
+		width: 150px;
+		top: 17%;
+		opacity: 0;
+		/*display: none;*/
+		transition: all 0.3s 0.2s;
+	}
+	.team .name{
+		font-size: 20px;
+		color: #444;
+	}
+	.team .desc{
+		top: 25%;
+	}
+	.team .icon{
+		top: 60%;
+	}
+	.team .icon span{
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		border-radius:  50%;
+		background-color: #F35D0B;
+		line-height: 30px;
+		text-align: center;
+		color: #fff;
+
+	}
+	.team .col-4:nth-of-type(1) .icon span{
+		background-color: #F77;
+	}
+	.team .col-4:nth-of-type(2) .icon span{
+		background-color: #DA2;
+	}
+	.team .col-4:nth-of-type(3) .icon span{
+		background-color: #26B;
+	}
+	.team .col-4:nth-of-type(4) .icon span{
+		background-color: #184;
+	}
+	.store {
+		padding: 80px 0;
+	}
+	.store h1,.store h4,.news h1,.news h4,.touch h1,.touch h4{
+		color: #FFF;
+	} 
+	.store .col-3{
+		height: 400px;
+		position: relative;
+		background-repeat: no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+		background-position: center;
+		/*background-position: all 0.3s;*/
+	}
+	.store .col-3:nth-of-type(1){
+		background-image: url(images/DownJackets001.jpg);
+	}
+	.store .col-3:nth-of-type(2){
+		background-image: url(images/DownJackets002.jpg);
+	}
+	.store .col-3:nth-of-type(3){
+		background-image: url(images/DownJackets003.jpg);
+	}
+
+	.store .col-3::before{
+		content: "";
+		width: 100%;
+		height: 100%;background-color: rgba(0,0,0,0.75);
+		position: absolute;
+		opacity: 0;
+	}
+	.store .col-3:hover::before{
+		opacity: 1;
+	}
+
+	.store .col-3:hover a,.store .col-3:hover .price{
+		opacity: 1;
+	}
+	.store .col-3 a{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		opacity: 0;
+		transition: all 0.3s;
+	}
+	.store .col-3 .price{
+			position: absolute;
+			top: 75%;
+			text-align: center;
+			width: 100%;
+			color: #fff;
+			font-weight: 600;
+			opacity: 0;  /* opacity 0  隱藏  opacity 1顯現 */
+			transition: all 0.3s;
+
+		}
+		.store .col-3 .title{
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+			color: #fff;
+			background-color: rgba(0,0,0,0.9);
+			padding: 10px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		.happy .col-3{
+			padding: 15px;
+			background-color: #eee;
+			box-shadow: 1px 0 5px rgba(0,0,0,0.5);
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			margin-top: 40px;
+			position: relative;
+		}
+		.happy .col-3 img{
+			display: block;
+			width: 81px;
+			height: 81px;
+			border-radius: 50%;
+			border: 2px solid #fff;
+			box-shadow: 0 0 0 1px #f40;  /*  0水平偏移 0垂直偏移 0模糊度 1px 延伸*/
+			position: relative;
+			margin: auto;
+			top: -65px;
+		}
+		.happy .col-3 p{
+			position: relative;
+			top: -40px;
+			font-style: italic;
+		}
+		.happy .quote{
+			position: absolute;
+			top:10px;
+			left: 10px;
+		}
+		.happy .quote span{
+			font-size: 36px;
+			color: #F73;
+		}
+		.happy .sign{
+			position: absolute;
+			right: 15px;
+			bottom:15px;
+			font-size: 20px;
+			font-style: italic;
+			color: #F73;
+			/*font-weight: 600;*/
+		}
+		.news {
+			padding: 100px 0;
+		}
+		
+	.news {
+		padding: 50px 0;
+	}
+	.news .col-4{
+		margin: 0;
+		width: 25%;
+		height: 200px;
+		background-repeat: no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		color: #fff;
+		text-align: center;
+		overflow: hidden;
+	}
+	
+	.news .col-4:nth-of-type(1){
+		background-image: url(images/01.jpg);
+	}
+	.news .col-4:nth-of-type(2){
+		background-image: url(images/03.jpg);
+	}
+	.news .col-4:nth-of-type(3){
+		background-image: url(images/04.jpg);
+	}
+	.news .col-4:nth-of-type(4){
+		background-image: url(images/05.jpg);
+	}
+	.news .box{
+		position: absolute;
+		top:164px;
+		transition: all 0.3s;
+	}
+	.news h3,.news p{
+		text-shadow: 1px 1px 5px #000;
+	}
+	.news .col-4:hover .box{
+		top: 50%;
+	}
+	.touch{
+			padding: 100px 0;
+			background-color: rgba(0,0,0,.6);
+		}
+		.touch .col-2:nth-of-type(1){
+			background-color: #fff;
+			border-radius: 10px;
+			padding: 15px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+	.touch h3{
+			text-align: center;
+			padding: 15px 0;
+		}
+		.touch input[type="text"],
+		.touch input[type="email"],
+		.touch input[type="number"],
+		.touch textarea{
+			width: 100%;
+			height: 30px;
+			margin: 5px 0;
+			padding: 5px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			border: 0;
+			border-bottom:2px solid #ccc;
+			text-replace: all 0.3s;
+		}
+		.touch input[type="text"]:focus,
+		.touch input[type="email"]:focus,
+		.touch input[type="number"]:focus,
+		.touch textarea:focus{
+			outline: 0;  
+			border-bottom:2px solid #F9893F;          /*點下去 不要藍框*/
+		}
+		.touch textarea{
+			height: 100px;
+		}
+		.touch input[type="submit"]{
+			margin: 10px auto;
+			height: initial;           /*  initial  回初始化  框框還原 */
+			line-height: initial;
+		}
+		.touch .col-3{
+			color: #a5a5a5;  /* 下載colorzilla,用滴管檢視原來網頁i con顏色*/
+			text-align: center;
+		}
+		.touch .icon_touch{
+			font-size: 45px;
+			margin-bottom: 20px;
+		}
+		.touch p{
+			font-size: 14px;
+			margin-bottom: 15px;
+		}
+		.touch .map{
+			width: 100%;
+			height: 250px;
+		}
+		.touch .map iframe{ /*將最底端的iframe裡面的寬高先刪除再來這裡設定*/
+			width: 100%;     /*設定寬高100%,並符合上方給的寬高值*/
+			height: 100%;
+		}
+
+
+		
+	</style>
+</head>
+<body>           <!-- 快捷打入程式碼 nav.full-width>.fixed-width>.logo+ul>li*8>a-->
+	<div class="wraper"> <!--使背景圖 不會移動-->
+	<nav class="full-width clearfix">
+		<div class="fixed-width">
+			<div class="logo">FEATURE<span class="orange">D</span></div>
+			<ul>
+				<li><a href="">Home</a></li>
+
+				<li><a href="">Services</a></li>
+				<li><a href="">AboutUs</a></li>
+				<li><a href="">Team</a></li>
+				<li><a href="">Store</a></li>
+				<li><a href="">Testimonial</a></li>
+				<li><a href="">News</a></li>
+				<li><a href="">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+	<header class="full-width">
+		<div class="title">
+			<h1>Beautiful WordPress Business Theme</h1>
+			<hr>
+			<h3>Cleanly Coded With User Friendly Interface</h3>
+			<a href="">Buy Now</a>
+		</div>
+		<div class="menu  fixed-width clearfix">   <!--.col-3*3>.icon+h4+p{lorem}-->
+			<div class="col-3">
+				<div class="icon fa fa-leaf fa-1g"></div>
+				<h4>Parallax Effect</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+			<div class="col-3">
+				<div class="icon  fa fa-heart-o fa-1g"></div>
+				<h4>Unlimited Options</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+			<div class="col-3">
+				<div class="icon  fa fa-camera fa-1g"></div>
+				<h4>Responsice Design</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+		</div>
+	<div class="orangeblock  full-width">
+		<div class="fixed-width">
+			<div class="left">
+				Easy to step up, just take a few steps and your website is ready within a minute
+			</div>
+			<div class="right"><a href="">Call to Action</a></div>
+		</div>
+	</div>
+	<div class="what clearfix">
+		<div class="fixed-width"> 
+			<h2>What We Do</h2>       <!-- 快捷 .col-3*6>.icon_what+h5+p{}  -->
+			<h4>This Is SubTitle</h4>  
+			<div class="col-3">
+				<div class="icon_what  fa fa-snowflake-o  fa-1g"></div>
+				<h5>Frequently Asked Question</h5>
+				<p>Aliquam varius ligula tempor, vehicula mauris sed, efficitur dui. Aenean euismod felis quis purus varius, nec laoreet leo mollis. Curabitur eget porta velit, non convallis velit. Aenean tempor rutrum ante at vulputate</p>
+			</div>
+			<div class="col-3">
+				<div class="icon_what fa fa-diamond fa-1g"></div>
+				<h5>Free Training & Courses</h5>
+				<p>Aliquam varius ligula tempor, vehicula mauris sed, efficitur dui. Aenean euismod felis quis purus varius, nec laoreet leo mollis. Curabitur eget porta velit, non convallis velit. Aenean tempor rutrum ante at vulputate</p>
+			</div>
+			<div class="col-3">
+				<div class="icon_what fa fa-line-chart fa-1g"></div>
+				<h5>Clean Code</h5>
+				<p>Aliquam varius ligula tempor, vehicula mauris sed, efficitur dui. Aenean euismod felis quis purus varius, nec laoreet leo mollis. Curabitur eget porta velit, non convallis velit. Aenean tempor rutrum ante at vulputate</p>
+			</div>
+			<div class="col-3">
+				<div class="icon_what fa fa-tree fa-1g"></div>
+				<h5>Only Good In PayPal</h5>
+				<p>Aliquam varius ligula tempor, vehicula mauris sed, efficitur dui. Aenean euismod felis quis purus varius, nec laoreet leo mollis. Curabitur eget porta velit, non convallis velit. Aenean tempor rutrum ante at vulputate</p>
+			</div>
+			<div class="col-3">
+				<div class="icon_what fa fa-youtube-play fa-1g"></div>
+				<h5>Production Graph</h5>
+				<p>Aliquam varius ligula tempor, vehicula mauris sed, efficitur dui. Aenean euismod felis quis purus varius, nec laoreet leo mollis. Curabitur eget porta velit, non convallis velit. Aenean tempor rutrum ante at vulputate</p>
+			</div>
+			<div class="col-3">
+				<div class="icon_what fa fa-twitter"></div>
+				<h5>Marketing Strategy</h5>
+				<p>Aliquam varius ligula tempor, vehicula mauris sed, efficitur dui. Aenean euismod felis quis purus varius, nec laoreet leo mollis. Curabitur eget porta velit, non convallis velit. Aenean tempor rutrum ante at vulputate</p>
+			</div>
+		</div>
+	</div>
+	</header>   
+	<div class="about clearfix">
+		<div class="fixed-width">
+			<div class="col-2 ">  <!--   快捷   .about>.cl-2*2  -->
+				<h2>About Us</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit animi, quisquam tenetur autem saepe facilis cumque. Repudiandae soluta consequuntur sunt veritatis ratione magni necessitatibus, corrupti eligendi voluptates, unde odio temporibus?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit animi, quisquam tenetur autem saepe facilis cumque. Repudiandae soluta consequuntur sunt veritatis ratione magni necessitatibus, corrupti eligendi voluptates, unde odio temporibus?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit animi, quisquam tenetur autem saepe facilis cumque. Repudiandae soluta consequuntur.</p>
+			</div>
+			<div class="col-2">
+				<img src="food-froth.jpg" alt="">
+			</div>
+		</div> 
+	</div>    
+	<div class="welcome">  <!--   快捷  welcome>p+a -->
+			<div class="fixed-width_600">
+			<p>We offer unlimited column option in our sections.
+			Our support forum open for free users also.</p>
+			<a href="">WELCOME</a>
+			</div>
+	</div><!--   快捷   .team>h1+h4+.col-4*/  -->
+	<div class="team clearfix">
+	<div class="fixed-width">	
+		<h1>Meet our Team</h1>
+		<h4>This Is Subtitle</h4>
+		<div class="col-4">
+			<div class="name">Gabriel Labreez</div>
+			<div class="desc">Donec malesuada pellentesque eros, eu aliquam nunc scelerisque</div>
+			<div class="icon">
+				<span class="fa fa-facebook"></span>
+				<span class="fa fa-twitter"></span>
+				<span class="fa fa-instagram"></span>
+			</div>
+			<div class="job">Co-founder</div>
+		</div>
+		<div class="col-4">
+			<div class="name">Marie Stan</div>
+			<div class="desc">Donec malesuada pellentesque eros, eu aliquam nunc scelerisque</div>
+			<div class="icon">
+				<span class="fa fa-facebook"></span>
+				<span class="fa fa-twitter"></span>
+				<span class="fa fa-instagram"></span>
+			</div>
+			<div class="job">HR Manager</div>
+		</div>
+		<div class="col-4">
+			<div class="name">Maurics Blac</div>
+			<div class="desc">Donec malesuada pellentesque eros, eu aliquam nunc scelerisque</div>
+			<div class="icon">
+				<span class="fa fa-facebook"></span>
+				<span class="fa fa-twitter"></span>
+				<span class="fa fa-instagram"></span>
+			</div>
+			<div class="job">Developer</div>
+		</div>
+		<div class="col-4">
+			<div class="name">David Rasop</div>
+			<div class="desc">Donec malesuada pellentesque eros, eu aliquam nunc scelerisque</div>
+			<div class="icon">
+				<span class="fa fa-facebook"></span>
+				<span class="fa fa-twitter"></span>
+				<span class="fa fa-instagram"></span>
+			</div>
+			<div class="job">Support Manager</div>
+		</div>
+	</div> <!--fixed-width -->
+	</div>  <!--team clearfix -->
+<!--.store>.fixed-width>h1{Woo Store}+h4{This Is Subtitle}+.col-3*3>a+.price+.title-->
+	<div class="store  clearfix">
+		<div class="fixed-width">
+			<h1>Woo Store</h1>
+			<h4>This Is Subtitle</h4>
+			<div class="col-3">
+				<a href="">Add To Cart</a>
+				<div class="price">&pound;324.00</div>
+				<div class="title">Black Down Jackets</div>
+			</div>
+			<div class="col-3">
+				<a href="">Add To Cart</a>
+				<div class="price">&pound;324.00</div>
+				<div class="title">Blue Down Jackets</div>
+			</div>
+			<div class="col-3">
+				<a href="">Add To Cart</a>
+				<div class="price">&pound;111.00</div>
+				<div class="title">Gray Down Jackets</div>
+			</div>
+		</div>
+	</div>
+<!-- .happy>.fixed-width>h1{Happy Customers}+h4{This Is Subtitle}+.col-3*3>.quote+img+p+sign -->
+
+	 <div class="happy clearfix">
+	 	<div class="fixed-width">
+	 		<h1>Happy Customers</h1>
+	 		<h4>This Is Subtitle</h4>
+	 		<div class="col-3">
+	 			<div class="quote"><span class="fa fa-quote-left"></div>
+	 			<img src="images/woman.jpg" alt="">
+	 			<p>I develop lots of websites with a vaiety of themes….the support I have had from ThemeHunk has been first class. Very quick, good support and always ready to correct my css errors!. They have tweaked the theme for me and have been great. Great support guys</p>
+	 			<div class="sign">Alex</div>
+
+	 		</div>
+	 		<div class="col-3">
+	 			<div class="quote"><span class="fa fa-quote-left"></div>
+	 			<img src="images/smile.jpg" alt="">
+	 			<p>I develop lots of websites with a vaiety of themes….the support I have had from ThemeHunk has been first class. Very quick, good support and always ready to correct my css errors!. They have tweaked the theme for me and have been great. Great support guys</p>
+	 			<div class="sign">Josh</div>
+
+	 		</div>
+	 		<div class="col-3">
+	 			<div class="quote"><span class="fa fa-quote-left"></span></div>
+	 			<img src="images/hcat.jpg" alt="">
+	 			<p>I develop lots of websites with a vaiety of themes….the support I have had from ThemeHunk has been first class. Very quick, good support and always ready to correct my css errors!. They have tweaked the theme for me and have been great. Great support guys</p>
+	 			<div class="sign">Maria</div>
+	 		</div>
+	 	</div>
+	 </div>
+	 <!--   .news>h1{Latest News}+h4{This is Subtitle}+.col-4*4>.box>h3+p  -->
+     <div class="news  clearfix">
+     	<h1>Latest News</h1>
+     	<h4>This is Subtitle</h4>
+     	<div class="col-4">
+     		<div class="box">
+     			<h3>Interview Meet</h3>
+     			
+     			<p>Maecenas eget orci in purus placerat volutpat sit amet id leo. </p>
+     		</div>
+     	</div>
+     	<div class="col-4">
+     		<div class="box">
+     			<h3>Business News</h3>
+     			
+     			<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+     		</div>
+     	</div>
+     	<div class="col-4">
+     		<div class="box">
+     			<h3>Coffee Time</h3>
+     			
+     			<p>Cras gravida suscipit sapien sed auctor. Mauris in luctus ante. </p>
+     		</div>
+     	</div>
+     	<div class="col-4">
+     		<div class="box">
+     			<h3>Woman Meeting</h3>
+     			
+     			<p>Quisque et dolor sit amet purus dictum finibus in ac dui.</p>
+     		</div>
+     	</div>
+     </div>
+	<!--  .touch>.fixed-width>h1+h4+.col-2*2  -->
+	<div class="touch clearfix">
+		<div class="fixed-width">
+			<h1>Get In Touch</h1>
+			<h4>Any question?</h4>
+			<div class="col-2">
+				<form action="">
+					<h3>Contact Us</h3>
+		<div><input type="text" placeholder="Name"></div>
+		<div><input type="email" placeholder="Email"></div>
+		<div><input type="number" placeholder="Phone"></div>
+		<div><textarea placeholder="Message"></textarea></div>
+		<input type="submit" value="送出">
+				</form>
+			</div>
+			<div class="col-2 clearfix">
+				<div class="col-3">
+					<div class="icon_touch fa fa-mobile"></div>
+					<p>+91 987654321</p>
+				</div>
+				<div class="col-3">
+					<div class="icon_touch fa fa-home"></div>
+					<p>92 Bayport Ave. South Richmond Hill, NY 11413</p>
+				</div>
+				<div class="col-3">
+					<div class="icon_touch fa fa-envelope-o"></div>
+					<p>info@themehunk.com
+</p>
+				</div>
+				<div class="map">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14456.477574500486!2d121.52374903713837!3d25.063942149421244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a951fdd9f7f9%3A0x7a40c3880c03a171!2z6Ie65YyX5biC56uL576O6KGT6aSo!5e0!3m2!1szh-TW!2stw!4v1514191837529" frameborder="0" style="border:0" allowfullscreen></iframe>     
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- footer>.fixed-width>.top>(.col-4*4>h5+ul>li)+.bottom>.copyright+.icon_footer -->
+	<footer>
+		<div class="fixed-width">
+			<div class="top clearfix">
+				<div class="col-4">
+					<h5>IMPORTANT LINKS</h5>
+					<ul>
+						<li>Affliates</li>
+						<li>Privacy Policy</li>
+						<li>Custom work</li>
+					</ul>
+				</div>
+				<div class="col-4">
+					<h5>RECENT POSTS</h5>
+					<ul>
+						<li>Interview Meet</li>
+						<li>Business News</li>
+						<li>Coffee Timet</li>
+					</ul>
+				</div>
+				<div class="col-4">
+					<h5>TAGS</h5>
+					<ul>
+						<li>Agency</li>
+						<li>Business</li>
+						<li>Meeting</li>
+						<li>Offici</li>
+						<li>Ontime</li>
+						<li>Relax</li>
+					</ul>
+				</div>
+				<div class="col-4">
+					<h5>ABOUT</h5>
+					<ul>
+						<li>Cras egestas lectus nec tortor cursus tristique. Maecenas id lacus quis nibh sollicitudin laoreet quis eget leo.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="copyright">Business onepage theme Powered by ThemeHunk</div>
+				<div class="icon_footer">
+					<span class="fa fa-facebook"></span>
+					<span class="fa fa-twitter"></span>
+					<span class="fa fa-google-plus"></span>
+					<span class="fa fa-behance"></span>
+					<span class="fa fa-pinterest-p"></span>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+
+
+	</div><!--  wraper的-->
+</body>
+</html>
